@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.example.editorialui.app-debug-51:/drawable_green_chair.png.flat",
+        "source": "com.example.editorialui.app-main-53:/drawable/green_chair.png"
+    },
+    {
+        "merged": "/Users/prerna.rajput/.gradle/daemon/9.0.0/com.example.editorialui.app-debug-51:/drawable_green_chair.png.flat",
+        "source": "/Users/prerna.rajput/.gradle/daemon/9.0.0/com.example.editorialui.app-main-53:/drawable/green_chair.png"
+    }
+]
