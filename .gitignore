@@ -1,0 +1,54 @@
+# Gradle
+.gradle/
+build/
+
+# Local configuration
+local.properties
+
+# Android Studio
+.idea/
+*.iml
+
+# Mac
+.DS_Store
+
+# Logs
+*.log
+
+# Keystore files
+*.jks
+*.keystore
+
+# Generated files
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Kotlin
+.kotlin/
+
+# Build outputs
+app/build/
+
+# Generated APKs
+*.apk
+*.aab
+
+# IntelliJ
+out/
+
+# Firebase / secrets
+google-services.json
+
+# NDK
+obj/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Navigation editor temp files
+.navigation/
+
+# Android profiling
+*.hprof
