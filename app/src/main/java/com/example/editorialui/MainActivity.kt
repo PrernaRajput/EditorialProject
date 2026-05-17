@@ -22,7 +22,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.border
 import androidx.compose.ui.draw.shadow
-
+import androidx.compose.foundation.Canvas
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +37,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+val InstrumentSerif: FontFamily = FontFamily(
+    Font(R.font.instrument_serif_regular)
+)
 @Composable
 fun EditorialScreen() {
 
@@ -64,7 +70,7 @@ fun EditorialScreen() {
                 color = Color.DarkGray
             )
 
-            Spacer(modifier = Modifier.weight(1f))
+
             Image(
                 painter = painterResource(
                     id = R.drawable.green_chair
@@ -74,44 +80,121 @@ fun EditorialScreen() {
                     .fillMaxWidth()
                     .height(320.dp)
             )
+            Spacer(modifier = Modifier.weight(1f))
+            Text(
+                text = "Echo the intricate nature.",
+                fontSize = 48.sp,
+                fontWeight = FontWeight.Black,
+                fontFamily = InstrumentSerif,
+                color = Color.Black
+            )
 
-            Button(
-                onClick = {},
+            BubbleBorderButton()
+        }
+    }
+}
 
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(72.dp)
-                    .shadow(
-                        elevation = 18.dp,
-                        shape = RoundedCornerShape(24.dp),
-                        clip = false
+@Composable
+fun BubbleBorderButton() {
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(90.dp),
+        contentAlignment = Alignment.Center
+    ) {
+
+        Canvas(
+            modifier = Modifier.matchParentSize()
+        ) {
+
+            val bubbleColor =
+                Color.Black
+
+            val spacing = 22f
+
+            // top
+            for (x in 0..size.width.toInt() step spacing.toInt()) {
+
+                drawCircle(
+                    color = bubbleColor,
+                    radius =
+                        (6..14).random().toFloat(),
+                    center = Offset(
+                        x.toFloat(),
+                        10f
                     )
-                    .border(
-                        width = 2.dp,
-                        color = Color(0xFF022202),
-                        shape = RoundedCornerShape(24.dp)
-                    ),
-
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF00FF26),
-                    contentColor = Color.Black
-                ),
-
-                shape = RoundedCornerShape(24.dp),
-
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 10.dp
-                )
-            ) {
-
-                Text(
-                    text = "Read More",
-
-                    fontSize = 22.sp,
-
-                    fontWeight = FontWeight.ExtraBold
                 )
             }
+
+            // bottom
+            for (x in 0..size.width.toInt() step spacing.toInt()) {
+
+                drawCircle(
+                    color = bubbleColor,
+                    radius =
+                        (6..14).random().toFloat(),
+                    center = Offset(
+                        x.toFloat(),
+                        size.height - 10f
+                    )
+                )
+            }
+
+            // left
+            for (y in 0..size.height.toInt() step spacing.toInt()) {
+
+                drawCircle(
+                    color = bubbleColor,
+                    radius =
+                        (6..14).random().toFloat(),
+                    center = Offset(
+                        10f,
+                        y.toFloat()
+                    )
+                )
+            }
+
+            // right
+            for (y in 0..size.height.toInt() step spacing.toInt()) {
+
+                drawCircle(
+                    color = bubbleColor,
+                    radius =
+                        (6..14).random().toFloat(),
+                    center = Offset(
+                        size.width - 10f,
+                        y.toFloat()
+                    )
+                )
+            }
+        }
+
+        Button(
+            onClick = {},
+
+            colors =
+                ButtonDefaults.buttonColors(
+                    containerColor =
+                        Color(0xFF00FF26),
+                    contentColor =
+                        Color.Black
+                ),
+
+            shape =
+                RoundedCornerShape(2.dp),
+
+            modifier = Modifier
+                .padding(2.dp)
+                .fillMaxWidth()
+                .height(64.dp)
+        ) {
+
+            Text(
+                text = "Read More",
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }
